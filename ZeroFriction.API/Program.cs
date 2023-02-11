@@ -1,5 +1,7 @@
 using ZeroFriction.API.Middlewares;
 using ZeroFriction.Domain;
+using ZeroFriction.Domain.Contracts;
+using ZeroFriction.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,8 +10,9 @@ var apiKeyConfigValue = builder.Configuration.GetValue<string>("ApiKey");
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddSingleton(s => new ApplicationConfigurationInfo { ApiKey = apiKeyConfigValue });
+builder.Services.AddScoped<IInvoiceService, InvoiceService>();
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Configuring Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

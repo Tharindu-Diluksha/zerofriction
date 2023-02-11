@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ZeroFriction.Domain\ZeroFriction.Domain.csproj" />
+    <ProjectReference Include="..\ZeroFriction.Services\ZeroFriction.Services.csproj" />
   </ItemGroup>
 
 </Project>
