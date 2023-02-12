@@ -15,8 +15,8 @@ namespace ZeroFriction.API.Middlewares
 
         public async Task InvokeAsync(HttpContext context)
         {
-            var apiKey = context.Request.Headers["X-API-Key"];
-            if (!string.IsNullOrWhiteSpace(apiKey) || string.Equals(apiKey, _applicationConfigurationInfo.ApiKey))
+            var apiKey = context.Request.Headers["X-API-Key"].FirstOrDefault();
+            if ((!context.Request.Path.ToString().Contains("swagger")) && (string.IsNullOrWhiteSpace(apiKey) || !string.Equals(apiKey, _applicationConfigurationInfo.ApiKey)))
             {
                 throw new UnauthorizedAccessException();
             }

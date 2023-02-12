@@ -1,4 +1,7 @@
 using ZeroFriction.API.Middlewares;
+using ZeroFriction.DB.Domain.Contracts;
+using ZeroFriction.DB.Domain.Dtos;
+using ZeroFriction.DB.Services;
 using ZeroFriction.Domain;
 using ZeroFriction.Domain.Contracts;
 using ZeroFriction.Services;
@@ -10,6 +13,17 @@ var apiKeyConfigValue = builder.Configuration.GetValue<string>("ApiKey");
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddSingleton(s => new ApplicationConfigurationInfo { ApiKey = apiKeyConfigValue });
+builder.Services.AddSingleton(s => {
+    DbInfo dbInfo = new DbInfo
+    {
+        DatabaseName = builder.Configuration.GetValue<string>("DBConnection:DatabaseName"),
+        DatabaseKey = builder.Configuration.GetValue<string>("DBConnection:DatabaseKey"),
+        DatabaseURI = builder.Configuration.GetValue<string>("DBConnection:DatabaseURI"),
+        CollectionId = builder.Configuration.GetValue<string>("DBConnection:CollectionId")
+    };
+    return dbInfo;
+});
+builder.Services.AddSingleton<IDocumentDbService, CosmosDbService>();
 builder.Services.AddScoped<IInvoiceService, InvoiceService>();
 
 // Configuring Swagger/OpenAPI

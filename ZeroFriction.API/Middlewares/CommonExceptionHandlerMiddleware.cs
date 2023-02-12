@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using ZeroFriction.DB.Domain.Exceptions;
 using ZeroFriction.Domain.Exceptions;
 
 namespace ZeroFriction.API.Middlewares
@@ -23,11 +24,11 @@ namespace ZeroFriction.API.Middlewares
             {
                 await HandleException(context, string.Empty, HttpStatusCode.Unauthorized);
             }
-            catch (ResourceNotFoundException ex)
+            catch (DocumentNotFoundException ex)
             {
                 await HandleException(context, string.Empty, HttpStatusCode.NotFound);
             }
-            catch (DbUpdateConcurrencyException ex)
+            catch (ConcurrencyException ex)
             {
                 await HandleException(context, string.Empty, HttpStatusCode.Conflict);
             }

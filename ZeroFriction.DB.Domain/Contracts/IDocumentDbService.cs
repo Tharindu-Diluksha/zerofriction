@@ -1,15 +1,18 @@
-﻿using ZeroFriction.DB.Domain.Dtos;
+﻿using ZeroFriction.DB.Domain.Documents;
+using ZeroFriction.DB.Domain.Dtos;
 
 namespace ZeroFriction.DB.Domain.Contracts
 {
     public interface IDocumentDbService
     {
-        Task<DocumentUpdateResultDto> CreateDocumentAsync(string collectionId, string partitionKey, object document);
+        Task<DocumentUpdateResultDto> CreateDocumentAsync<T>(string partitionKey, T document)
+            where T : DocumentBase, new();
 
-        Task<DocumentUpdateResultDto> ReplaceDocumentAsync(string collectionId, string partitionKey, string documentId, object document, string eTag);
+        Task<DocumentUpdateResultDto> ReplaceDocumentAsync<T>(string partitionKey, string documentId, T document, string eTag)
+            where T : DocumentBase, new();
 
-        Task DeleteDocumentAsync(string collectionId, string partitionKey, string documentId);
+        Task DeleteDocumentAsync(string partitionKey, string documentId);
 
-        Task<T> GetDocumentAsync<T>(string collectionId, string partitionKey, string documentId);
+        Task<T> GetDocumentAsync<T>(string partitionKey, string documentId);
     }
 }

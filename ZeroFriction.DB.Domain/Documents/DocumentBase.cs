@@ -7,9 +7,6 @@ namespace ZeroFriction.DB.Domain.Documents
         [JsonProperty("id")]
         public string Id { get; set; }
 
-        [JsonProperty("partitionKey")]
-        public virtual string PartitionKey { get; set; }
-
         [JsonProperty("_etag")]
         public string ETag { get; set; }
 

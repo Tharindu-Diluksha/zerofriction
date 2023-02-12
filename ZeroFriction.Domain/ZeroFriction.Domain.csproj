@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ZeroFriction.DB.Domain\ZeroFriction.DB.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

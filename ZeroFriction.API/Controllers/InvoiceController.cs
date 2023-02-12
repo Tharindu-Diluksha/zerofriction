@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ZeroFriction.DB.Domain.Dtos;
 using ZeroFriction.Domain.Contracts;
 using ZeroFriction.Domain.Dtos;
 
@@ -14,7 +15,7 @@ namespace ZeroFriction.API.Controllers
         public InvoiceController(IInvoiceService invoiceService)
         {
             _invoiceService = invoiceService;
-        }  
+        }
 
         // GET api/<InvoiceController>/5
         [HttpGet("{id}")]
@@ -25,16 +26,16 @@ namespace ZeroFriction.API.Controllers
 
         // POST api/<InvoiceController>
         [HttpPost]
-        public async Task PostAsync([FromBody] InvoiceDto invoice)
+        public async Task<DocumentUpdateResultDto> PostAsync([FromBody] InvoiceDto invoice)
         {
-            await _invoiceService.CreateAsync(invoice);
+            return await _invoiceService.CreateAsync(invoice);
         }
 
         // PUT api/<InvoiceController>/5
         [HttpPut("{id}")]
-        public async Task PutAsync(string id, [FromBody] InvoiceDto invoice)
+        public async Task<DocumentUpdateResultDto> PutAsync(string id, [FromBody] InvoiceDto invoice)
         {
-            await _invoiceService.UpdateAsync(id, invoice);
+            return await _invoiceService.UpdateAsync(id, invoice);
         }
 
         // DELETE api/<InvoiceController>/5
