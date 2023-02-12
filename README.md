@@ -2,7 +2,7 @@
 
 ## Design Details
 * Includes a simple API key authentication. Using a Web API middleware.
-* Includes a common exception handler which decorates the responces' status and error messages(if any) based on the exceptions.
+* Includes a common exception handler that decorates the response status and error messages(if any) based on the exceptions.
 * Invoice service with unit tests.
 * Cosmos DB service with the logical partitioning strategy based on the document id. (Assumption behind that is, this solution is a very simple usecase with just creating, reading or updating of a single document. If there are other documents with different usecases, then the partition strategy should be changed to support equally distribution of the data load)
 * Invoice data model. Invoice Lines are under the Invoice document as subdocuments. (Since, an invoice line doesn't consume much storage space. Therefore can be included in the same invoice document.)
