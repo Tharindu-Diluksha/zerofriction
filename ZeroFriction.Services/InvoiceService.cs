@@ -86,7 +86,7 @@ namespace ZeroFriction.Services
         {
             invoice.Date = invoiceDto.Date;
             invoice.Description = invoiceDto.Description;
-            invoice.TotalAmount = invoiceDto.TotalAmount;
+            invoice.TotalAmount = invoiceDto.InvoiceLines.Sum(l => l.LineAmount);
             invoice.InvoiceLines = invoiceDto.InvoiceLines.Select(invoiceLine => new InvoiceLine
             {
                 Amount = invoiceLine.Amount,
