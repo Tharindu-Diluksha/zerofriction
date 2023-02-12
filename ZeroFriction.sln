@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeroFriction.Domain", "Zero
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeroFriction.DB.Domain", "ZeroFriction.DB.Domain\ZeroFriction.DB.Domain.csproj", "{F3DA5988-FE61-4B02-80F7-9713C0156038}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeroFriction.DB.Services", "ZeroFriction.DB.Services\ZeroFriction.DB.Services.csproj", "{6799703D-7FC4-4169-8D1F-898DCB13FFAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeroFriction.DB.Services", "ZeroFriction.DB.Services\ZeroFriction.DB.Services.csproj", "{6799703D-7FC4-4169-8D1F-898DCB13FFAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeroFriction.Services.Tests", "ZeroFriction.Services.Tests\ZeroFriction.Services.Tests.csproj", "{7A1FF193-A39D-47E0-8CFA-DFF7FCB97830}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{6799703D-7FC4-4169-8D1F-898DCB13FFAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6799703D-7FC4-4169-8D1F-898DCB13FFAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6799703D-7FC4-4169-8D1F-898DCB13FFAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A1FF193-A39D-47E0-8CFA-DFF7FCB97830}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A1FF193-A39D-47E0-8CFA-DFF7FCB97830}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A1FF193-A39D-47E0-8CFA-DFF7FCB97830}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A1FF193-A39D-47E0-8CFA-DFF7FCB97830}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
