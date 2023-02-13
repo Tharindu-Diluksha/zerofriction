@@ -42,7 +42,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"date\": \"2023-02-12T06:45:21.519Z\",\r\n  \"description\": \"Store Invoice Description\",\r\n  \"invoiceLines\": [\r\n    {\r\n      \"amount\": 100,\r\n      \"quantity\": 1,\r\n      \"unitPrice\": 1,\r\n      \"lineAmount\": 100\r\n    },\r\n    {\r\n      \"amount\": 100,\r\n      \"quantity\": 1,\r\n      \"unitPrice\": 1,\r\n      \"lineAmount\": 100\r\n    }\r\n  ]\r\n}",
+					"raw": "{\r\n  \"date\": \"2023-02-13T06:45:21.519Z\",\r\n  \"description\": \"Store Invoice Description\",\r\n  \"invoiceLines\": [\r\n    {\r\n      \"amount\": 100,\r\n      \"quantity\": 1,\r\n      \"unitPrice\": 1,\r\n      \"lineAmount\": 100\r\n    },\r\n    {\r\n      \"amount\": 100,\r\n      \"quantity\": 1,\r\n      \"unitPrice\": 1,\r\n      \"lineAmount\": 100\r\n    }\r\n  ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -142,13 +142,57 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"id\": \"{{invoiceId}}\",\r\n  \"eTag\": \"{{invoiceLastRetrievedETag}}\",\r\n  \"date\": \"2023-02-12T06:45:21.519Z\",\r\n  \"description\": \"Store Invoice DescriptionUupdated\",\r\n  \"invoiceLines\": [\r\n    {\r\n      \"amount\": 100,\r\n      \"quantity\": 1,\r\n      \"unitPrice\": 1,\r\n      \"lineAmount\": 100\r\n    }\r\n  ]\r\n}",
+					"raw": "{\r\n  \"id\": \"{{invoiceId}}\",\r\n  \"eTag\": \"{{invoiceLastRetrievedETag}}\",\r\n  \"date\": \"2023-02-13T07:45:21.519Z\",\r\n  \"description\": \"Store Invoice DescriptionUupdated\",\r\n  \"invoiceLines\": [\r\n    {\r\n      \"amount\": 100,\r\n      \"quantity\": 1,\r\n      \"unitPrice\": 1,\r\n      \"lineAmount\": 100\r\n    }\r\n  ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
+				"url": {
+					"raw": "{{BaseUrl}}/invoice/{{invoiceId}}",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"invoice",
+						"{{invoiceId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Invoice",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{AuthKey}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "X-API-Key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
 				"url": {
 					"raw": "{{BaseUrl}}/invoice/{{invoiceId}}",
 					"host": [
