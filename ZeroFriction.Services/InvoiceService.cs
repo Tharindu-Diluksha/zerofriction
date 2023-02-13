@@ -41,7 +41,7 @@ namespace ZeroFriction.Services
         /// <exception cref="NotImplementedException"></exception>
         public async Task DeleteAsync(string id)
         {
-            throw new NotImplementedException();
+            await _documentDbService.DeleteDocumentAsync<Invoice>(id, id);
         }
 
         /// <summary>
@@ -79,6 +79,7 @@ namespace ZeroFriction.Services
 
         /// <summary>
         /// Create the invoice DB document object with invoiceDto object data
+        /// This also calcualte the total amount using invoice line amounts
         /// </summary>
         /// <param name="invoiceDto"></param>
         /// <param name="invoice"></param>
@@ -124,16 +125,19 @@ namespace ZeroFriction.Services
         /// <exception cref="BusinessException"></exception>
         private void Validate(InvoiceDto invoiceDto)
         {
+            // Validate invoice date required condition
             if (invoiceDto.Date == DateTime.MinValue)
             {
                 throw new BusinessException("ERROR_VALID_DATE_REQUIRED");
             }
 
+            // Validate description required condition
             if (string.IsNullOrWhiteSpace(invoiceDto.Description))
             {
                 throw new BusinessException("ERROR_VALID_DESCRIPTION_REQUIRED");
             }
 
+            // Validate at least one invoice line should be included condition
             if (!invoiceDto.InvoiceLines.Any())
             {
                 throw new BusinessException("ERROR_AT_LEAST_ONE_INVOICELINE_REQUIRED");

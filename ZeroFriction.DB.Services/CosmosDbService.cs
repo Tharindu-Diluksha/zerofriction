@@ -69,6 +69,7 @@
             }
             catch (CosmosException ex)
             {
+                // If ETag mismatch throws concurrency exception
                 if (ex.StatusCode == System.Net.HttpStatusCode.PreconditionFailed)
                 {
                     throw new ConcurrencyException();
@@ -85,9 +86,23 @@
         /// <param name="documentId"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public virtual async Task DeleteDocumentAsync(string partitionKey, string documentId)
+        public virtual async Task DeleteDocumentAsync<T>(string partitionKey, string documentId)
+            where T : DocumentBase, new()
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _container.DeleteItemAsync<T>(id: documentId, partitionKey: new PartitionKey(partitionKey));
+            }
+            catch (CosmosException ex)
+            {
+                // if the document not found throws document not found execption
+                if (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new DocumentNotFoundException();
+                }
+
+                throw;
+            }
         }
 
         /// <summary>
@@ -107,6 +122,7 @@
             }
             catch (CosmosException ex)
             {
+                // if the document not found throws document not found execption
                 if (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
                     throw new DocumentNotFoundException();

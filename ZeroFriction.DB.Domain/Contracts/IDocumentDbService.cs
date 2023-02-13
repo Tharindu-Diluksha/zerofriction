@@ -11,7 +11,8 @@ namespace ZeroFriction.DB.Domain.Contracts
         Task<DocumentUpdateResultDto> ReplaceDocumentAsync<T>(string partitionKey, string documentId, T document, string eTag)
             where T : DocumentBase, new();
 
-        Task DeleteDocumentAsync(string partitionKey, string documentId);
+        Task DeleteDocumentAsync<T>(string partitionKey, string documentId)
+            where T : DocumentBase, new();
 
         Task<T> GetDocumentAsync<T>(string partitionKey, string documentId);
     }

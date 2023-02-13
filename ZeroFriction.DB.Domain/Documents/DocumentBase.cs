@@ -2,6 +2,9 @@
 
 namespace ZeroFriction.DB.Domain.Documents
 {
+    /// <summary>
+    /// Base class for every document class which should be inherited
+    /// </summary>
     public abstract class DocumentBase
     {
         [JsonProperty("id")]

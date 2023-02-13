@@ -17,6 +17,7 @@ namespace ZeroFriction.Services.Tests
     {
         public class CreateInvoiceTest
         {
+            // Valid Invoice test data for creation test
             public static IEnumerable<object[]> ValidInvoiceData =>
                new List<object[]>
                {
@@ -49,6 +50,11 @@ namespace ZeroFriction.Services.Tests
                     }
                };
 
+            /// <summary>
+            /// Testing successful invoice creation data when valid data
+            /// </summary>
+            /// <param name="invoiceDto"></param>
+            /// <returns></returns>
             [Theory]
             [MemberData(nameof(ValidInvoiceData))]
             public async Task WhenPassingCorrectData_CreateSuccessfully(InvoiceDto invoiceDto)
@@ -64,7 +70,7 @@ namespace ZeroFriction.Services.Tests
                 mockDocumentDbService.Verify(s => s.CreateDocumentAsync(It.IsAny<string>(), It.IsAny<Invoice>()), Times.Once());
             }
 
-
+            // Invalid test data for invoice creation test
             public static IEnumerable<object[]> InvalidInvoiceData =>
                new List<object[]>
                {
@@ -109,6 +115,12 @@ namespace ZeroFriction.Services.Tests
                     },
                };
 
+            /// <summary>
+            /// Testing validation exceptions when try to create with invalid data
+            /// </summary>
+            /// <param name="invoiceDto"></param>
+            /// <param name="expectedErrorMessage"></param>
+            /// <returns></returns>
             [Theory]
             [MemberData(nameof(InvalidInvoiceData))]
             public async Task WhenPassingIncorrectData_ThrowsException(InvoiceDto invoiceDto, string expectedErrorMessage)
@@ -124,18 +136,30 @@ namespace ZeroFriction.Services.Tests
 
         public class DeleteInvoiceTest
         {
-            [Fact]
-            public async Task WhenDeletingInvoice_ThrowsException()
+            /// <summary>
+            /// Test successful invoice deletion
+            /// </summary>
+            /// <param name="id"></param>
+            /// <returns></returns>
+            [Theory]
+            [InlineData("id-1")]
+            public async Task WhenDeletingInvoice_SuccessfullyDelete(string id)
             {
                 Mock<IDocumentDbService> mockDocumentDbService = new();
                 var invoiceService = CreateInvoiceService(mockDocumentDbService);
 
-                var ex = await Assert.ThrowsAsync<NotImplementedException>(() => invoiceService.DeleteAsync(It.IsAny<string>()));
+                await invoiceService.DeleteAsync(id);
+                mockDocumentDbService.Verify(s => s.DeleteDocumentAsync<Invoice>(id, id), Times.Once());
             }
         }
 
         public class GetInvoiceTest
         {
+            /// <summary>
+            /// Test successful data get when retrieving an invoice
+            /// </summary>
+            /// <param name="id"></param>
+            /// <returns></returns>
             [Theory]
             [InlineData("id-1")]
             public async Task WhenRetrieving_ReturnCorrectData(string id)
@@ -167,6 +191,11 @@ namespace ZeroFriction.Services.Tests
                 mockDocumentDbService.Verify(s => s.GetDocumentAsync<Invoice>(id, id), Times.Once());
             }
 
+            /// <summary>
+            /// Test throwing DocumentNotFoundException when trying to retrieve non exsititng document
+            /// </summary>
+            /// <param name="id"></param>
+            /// <returns></returns>
             [Theory]
             [InlineData("id-not-exist")]
             public async Task WhenRetrievingNonExisitngRecord_ThrowsException(string id)
@@ -182,6 +211,7 @@ namespace ZeroFriction.Services.Tests
 
         public class UpdateInvoiceTest
         {
+            // Valid invoice data for update
             public static IEnumerable<object[]> ValidInvoiceData =>
                new List<object[]>
                {
@@ -202,6 +232,11 @@ namespace ZeroFriction.Services.Tests
                     },
                };
 
+            /// <summary>
+            /// Test successful invoice update when valid data
+            /// </summary>
+            /// <param name="invoiceDto"></param>
+            /// <returns></returns>
             [Theory]
             [MemberData(nameof(ValidInvoiceData))]
             public async Task WhenPassingCorrectData_UpdateSuccessfully(InvoiceDto invoiceDto)
@@ -236,7 +271,7 @@ namespace ZeroFriction.Services.Tests
                 mockDocumentDbService.Verify(s => s.ReplaceDocumentAsync(result.Id, result.Id, It.IsAny<Invoice>(), It.IsAny<string>()), Times.Once());
             }
 
-
+            // Invalid test data for update test
             public static IEnumerable<object[]> InvalidInvoiceData =>
                new List<object[]>
                {
@@ -281,6 +316,12 @@ namespace ZeroFriction.Services.Tests
                     },
                };
 
+            /// <summary>
+            /// Testing validation exceptions when try to update with invalid data
+            /// </summary>
+            /// <param name="invoiceDto"></param>
+            /// <param name="expectedErrorMessage"></param>
+            /// <returns></returns>
             [Theory]
             [MemberData(nameof(InvalidInvoiceData))]
             public async Task WhenPassingIncorrectData_ThrowsException(InvoiceDto invoiceDto, string expectedErrorMessage)

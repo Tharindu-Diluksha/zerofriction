@@ -17,28 +17,28 @@ namespace ZeroFriction.API.Controllers
             _invoiceService = invoiceService;
         }
 
-        // GET api/<InvoiceController>/5
+        // GET api/invoice/{id}
         [HttpGet("{id}")]
         public async Task<InvoiceDto> GetAsync(string id)
         {
             return await _invoiceService.GetAsync(id);
         }
 
-        // POST api/<InvoiceController>
+        // POST api/invoice
         [HttpPost]
         public async Task<DocumentUpdateResultDto> PostAsync([FromBody] InvoiceDto invoice)
         {
             return await _invoiceService.CreateAsync(invoice);
         }
 
-        // PUT api/<InvoiceController>/5
+        // PUT api/invoice/{id}
         [HttpPut("{id}")]
         public async Task<DocumentUpdateResultDto> PutAsync(string id, [FromBody] InvoiceDto invoice)
         {
             return await _invoiceService.UpdateAsync(id, invoice);
         }
 
-        // DELETE api/<InvoiceController>/5
+        // DELETE api/invoice/{id}
         [HttpDelete("{id}")]
         public async Task DeleteAsync(string id)
         {

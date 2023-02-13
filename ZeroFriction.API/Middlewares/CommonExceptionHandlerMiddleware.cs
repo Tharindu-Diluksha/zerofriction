@@ -12,6 +12,11 @@ namespace ZeroFriction.API.Middlewares
             _next = next;
         }
 
+        /// <summary>
+        /// Handle all the exceptions throws by the service loigcs and convert the response to have a matching response code
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public async Task InvokeAsync(HttpContext context)
         {
 
