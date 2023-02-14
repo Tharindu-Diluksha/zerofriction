@@ -1,4 +1,7 @@
-﻿namespace ZeroFriction.Domain.Dtos
+﻿using System;
+using System.Collections.Generic;
+
+namespace ZeroFriction.Domain.Dtos
 {
     public class InvoiceDto : BaseDto
     {

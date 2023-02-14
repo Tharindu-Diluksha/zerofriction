@@ -1,4 +1,5 @@
-﻿using ZeroFriction.DB.Domain.Dtos;
+﻿using System.Threading.Tasks;
+using ZeroFriction.DB.Domain.Dtos;
 using ZeroFriction.Domain.Dtos;
 
 namespace ZeroFriction.Domain.Contracts

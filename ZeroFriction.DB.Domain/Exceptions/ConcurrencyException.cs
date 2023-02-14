@@ -1,4 +1,6 @@
-﻿namespace ZeroFriction.DB.Domain.Exceptions
+﻿using System;
+
+namespace ZeroFriction.DB.Domain.Exceptions
 {
     public class ConcurrencyException : Exception
     {

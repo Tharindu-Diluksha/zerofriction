@@ -1,4 +1,6 @@
-﻿using ZeroFriction.Domain;
+﻿using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
+using ZeroFriction.Domain;
 
 namespace ZeroFriction.API.Middlewares
 {

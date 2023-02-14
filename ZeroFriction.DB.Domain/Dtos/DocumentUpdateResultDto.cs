@@ -1,4 +1,6 @@
-﻿namespace ZeroFriction.DB.Domain.Dtos
+﻿using System;
+
+namespace ZeroFriction.DB.Domain.Dtos
 {
     public class DocumentUpdateResultDto
     {

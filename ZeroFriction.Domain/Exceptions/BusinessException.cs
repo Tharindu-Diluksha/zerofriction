@@ -1,4 +1,6 @@
-﻿namespace ZeroFriction.Domain.Exceptions
+﻿using System;
+
+namespace ZeroFriction.Domain.Exceptions
 {
     public class BusinessException : Exception
     {

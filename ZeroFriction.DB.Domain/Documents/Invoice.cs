@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using ZeroFriction.DB.Domain.Constants;
 
 namespace ZeroFriction.DB.Domain.Documents
