@@ -9,7 +9,6 @@
 * For concurrency handling "eTag" is being used and if there is any concurrency violation API throws 409 conflict status.
 
 ## API Documentation
-* Swagger documentation is generated automatically when web API start in development environment.
 * Postman collection is included with the name "InvoiceAPI.postman_collection.json".
 
 ## Notes for postman collection
